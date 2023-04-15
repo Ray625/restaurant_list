@@ -1,7 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const restaurants = require('./restaurant.json')
 const Restaurant = require('./models/restaurant')
 const app = express()
 const port = 3000
@@ -37,10 +36,15 @@ app.get('/', (req, res) => {
 
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const restaurantList = restaurants.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-  })
-  res.render('index', { restaurants: restaurantList, keyword })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => {
+      restaurants = restaurants.filter(restaurant => {
+        return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+      })
+      res.render('index', { restaurants, keyword })
+    })
+    .catch(error => console.log(error))
 })
 
 app.get('/restaurants/:id', (req, res) => {
