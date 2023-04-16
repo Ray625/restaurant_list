@@ -44,9 +44,11 @@
               </div>
               <div class="card-footer d-flex justify-content-end">
                 <div>
-                  <a class="mx-1" href="#">Edit</a>
-                  <a class="mx-1" href="/restaurants/{{this._id}}">Detail</a>
-                  <button class="btn btn-secondary btn-sm ms-1">Delete</button>
+                  <a class="mx-1 btn btn-sm btn-outline-dark" href=" /restaurants/{{this._id}}/edit#">Edit</a>
+                  <a class="mx-1 btn btn-sm btn-outline-dark" href=" /restaurants/{{this._id}}">Detail</a>
+                  <form action="./restaurant/{{ this._id }}/delete" method="post" style="display: inline">
+                    <button class="btn btn-secondary btn-sm ms-1">Delete</button>
+                  </form>
                 </div>
               </div>
             </div>

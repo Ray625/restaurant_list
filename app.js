@@ -47,6 +47,34 @@ app.post('/restaurants', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const restaurantNewData = req.body
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      Object.assign(restaurant, restaurantNewData)
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
+})
+
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   Restaurant.find()
@@ -57,14 +85,6 @@ app.get('/search', (req, res) => {
       })
       res.render('index', { restaurants, keyword })
     })
-    .catch(error => console.log(error))
-})
-
-app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
-    .lean()
-    .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.log(error))
 })
 
