@@ -66,12 +66,20 @@ app.get('/restaurants/:id/edit', (req, res) => {
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   const restaurantNewData = req.body
-  return Restaurant.findById(id)
+  Restaurant.findById(id)
     .then(restaurant => {
       Object.assign(restaurant, restaurantNewData)
       return restaurant.save()
     })
     .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurant/:id/delete', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
