@@ -1,4 +1,4 @@
-![myimage](https://raw.githubusercontent.com/Ray625/restaurantList/main/screen.PNG)
+![myimage](https://github.com/Ray625/restaurant_list/blob/main/screen.PNG)
 ## 簡介
 簡易的餐廳清單，可以瀏覽餐廳、查看餐廳資料。
 ## 功能
