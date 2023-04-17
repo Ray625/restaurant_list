@@ -8,7 +8,7 @@
 ## 環境設置
 Node.js@18.14.0  
 express@4.16.4  
-express-handlebars@3.0.0
+express-handlebars@3.0.0  
 body-parser@1.20.2
 ## 開始使用
 1. 請先安裝Node.js與npm  
