@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="col-md-10 col-12 mx-auto">
     <div class="row row-cols-sm-2">
-      <form action="/restaurants/{{restaurant._id}}/edit" method="post">
+      <form action="/restaurants/{{restaurant._id}}?_method=put" method="post">
         <div class="mb-3">
           <label for="name" class="form-label">餐廳名稱:</label>
           <input class="form-control" type="text" placeholder="鼎泰豐.." name="name" id="name" required
