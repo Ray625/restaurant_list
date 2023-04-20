@@ -11,14 +11,14 @@ router.get('/', (req, res) => {
 
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  Restaurant.find()
+  Restaurant.find({
+    $or: [
+      { name: { $regex: new RegExp(keyword, 'i') } },
+      { category: { $regex: new RegExp(keyword, 'i') } },
+    ]
+  })
     .lean()
-    .then(restaurants => {
-      restaurants = restaurants.filter(restaurant => {
-        return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-      })
-      res.render('index', { restaurants, keyword })
-    })
+    .then(restaurants => res.render('index', { restaurants, keyword }))
     .catch(error => console.log(error))
 })
 

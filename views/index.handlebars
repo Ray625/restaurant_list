@@ -1,24 +1,21 @@
 <!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer pb-3">
-    <div class="search-bar-inner">
-      <form action="/search" method="get">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </form>
-      <div class="container p-0 mt-3 mb-0" style="display: flex; flex-direction: row;justify-content: flex-end;">
-        <div">
-          <a class="btn btn-outline-dark" href="./restaurants/new">新增餐廳</a>
-      </div>
+<div class="container-sm mt-5 ">
+  <div class="col-md-10 col-12 mx-auto d-flex justify-content-between">
+    <form action="/search" method="get" style=" max-width:250px">
+      <input type="text" name="keyword" class="form-control " placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+        value="{{keyword}}" aria-describedby="search-button" style="border-radius:15px; max-width:250px">
+    </form>
+    <div class="dropdown">
+      <button class="btn btn-outline-dark dropdown-toggle" type="button" id="sortButton" data-bs-toggle="dropdown"
+        aria-expanded="false">排序 </button>
+      <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="sortButton">
+        <li><a class="dropdown-item active" href="#">A -> Z</a></li>
+        <li><a class="dropdown-item" href="#">Z -> A</a></li>
+        <li><a class="dropdown-item" href="#">類別</a></li>
+        <li><a class="dropdown-item" href="#">地區</a></li>
+      </ul>
     </div>
   </div>
-</div>
 </div>
 
 <!-- restaurant list -->
