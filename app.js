@@ -5,7 +5,8 @@ const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const app = express()
-const port = 3000
+
+const routes = require('./routes')
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
 if (process.env.NODE_ENV !== 'production') {
@@ -32,73 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(methodOverride('_method'))
 
-app.get('/', (req, res) => {
-  Restaurant.find()
-    .lean()
-    .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.log(error))
-})
+app.use(routes)
 
-app.get('/restaurants/new', (req, res) => {
-  res.render('new')
-})
-
-app.post('/restaurants', (req, res) => {
-  const restaurant = req.body
-  return Restaurant.create(restaurant)     // 存入資料庫
-    .then(() => res.redirect('/')) // 新增完成後導回首頁
-    .catch(error => console.log(error))
-})
-
-app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
-    .lean()
-    .then(restaurant => res.render('show', { restaurant }))
-    .catch(error => console.log(error))
-})
-
-app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
-    .lean()
-    .then(restaurant => res.render('edit', { restaurant }))
-    .catch(error => console.log(error))
-})
-
-app.put('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  const restaurantNewData = req.body
-  Restaurant.findById(id)
-    .then(restaurant => {
-      Object.assign(restaurant, restaurantNewData)
-      return restaurant.save()
-    })
-    .then(() => res.redirect(`/`))
-    .catch(error => console.log(error))
-})
-
-app.delete('/restaurant/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
-    .then(restaurant => restaurant.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  Restaurant.find()
-    .lean()
-    .then(restaurants => {
-      restaurants = restaurants.filter(restaurant => {
-        return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-      })
-      res.render('index', { restaurants, keyword })
-    })
-    .catch(error => console.log(error))
-})
-
-app.listen(port, () => {
-  console.log(`The web app is running on http://localhost:${port}`)
+app.listen(3000, () => {
+  console.log('The web app is running on http://localhost:3000')
 })
