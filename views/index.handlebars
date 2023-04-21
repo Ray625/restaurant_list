@@ -5,15 +5,14 @@
       <input type="text" name="keyword" class="form-control " placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
         value="{{keyword}}" aria-describedby="search-button" style="border-radius:15px; max-width:250px">
     </form>
-    <div class="dropdown">
-      <button class="btn btn-outline-dark dropdown-toggle" type="button" id="sortButton" data-bs-toggle="dropdown"
-        aria-expanded="false">排序 </button>
-      <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="sortButton">
-        <li><a class="dropdown-item active" href="#">A -> Z</a></li>
-        <li><a class="dropdown-item" href="#">Z -> A</a></li>
-        <li><a class="dropdown-item" href="#">類別</a></li>
-        <li><a class="dropdown-item" href="#">地區</a></li>
-      </ul>
+    <div>
+      <select class="dropdown" name="sort" id="sort">
+        <option>排序</option>
+        <option value="asc">A -> Z</option>
+        <option value="desc">Z -> A</option>
+        <option value="category">類別</option>
+        <option value="location">地區</option>
+      </select>
     </div>
   </div>
 </div>
