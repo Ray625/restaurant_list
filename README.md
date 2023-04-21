@@ -21,19 +21,23 @@ method-override@3.0.0
 ```
 npm install
 ```
-4. 啟用伺服器
+4.設定環境變數: 在專案資料夾下新增.env檔案，並填入你的MongoDB連線字串
+```
+MONGODB_URI = "<你的連線字串>"
+```
+5. 啟用伺服器
 ```
 npm run start
 ```
-5. 若看見此訊息代表順利運行，打開瀏覽器進入到以下網址
+6. 若看見此訊息代表順利運行，打開瀏覽器進入到以下網址
 ```
 The web app is running on http://localhost:3000
 ```
-6. 新增種子資料
+7. 新增種子資料
 ```
 npm run seed
 ```
-7. 若欲停止使用請輸入
+8. 若欲停止使用請輸入
 ```
 Ctrl + C
 ```
