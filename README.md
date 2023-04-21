@@ -21,7 +21,7 @@ method-override@3.0.0
 ```
 npm install
 ```
-4.設定環境變數: 在專案資料夾下新增.env檔案，並填入你的MongoDB連線字串
+4. 設定環境變數: 在專案資料夾下新增.env檔案，並填入你的MongoDB連線字串
 ```
 MONGODB_URI = "<你的連線字串>"
 ```
