@@ -11,12 +11,9 @@
 ## 環境設置
 Node.js@18.14.0  
 express@4.16.4  
-<<<<<<< HEAD
-express-handlebars@3.0.0
-=======
 express-handlebars@3.0.0  
->>>>>>> 165aab9bc9b259c096430ac20dcc68f5bd176497
-body-parser@1.20.2
+body-parser@1.20.2  
+method-override@3.0.0
 ## 開始使用
 1. 請先安裝Node.js與npm  
 2. clone專案至本地
