@@ -12,10 +12,10 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
   createAt: {
-    type: Data,
-    default: Data.now
+    type: Date,
+    default: Date.now
   }
 })
 
