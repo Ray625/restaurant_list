@@ -12,19 +12,20 @@ router.get('/', (req, res) => {
 })
 
 router.get('/search', (req, res) => {
+  const userId = req.user._id
   const keyword = req.query.keyword
   const sortMethod = req.query.sortMethod
   let sortIndex = { name: 'asc' }
   switch (sortMethod) {
-    case 'Z -> A':
-      sortIndex = { name: 'desc' };
+    case '評分高至低':
+      sortIndex = { rating: 'desc' };
       break;
-    case '類別':
-      sortIndex = { category: 'asc' };
-      break;
-    case '地區':
-      sortIndex = { location: 'asc' };
-      break;
+    // case '類別':
+    //   sortIndex = { category: 'asc' };
+    //   break;
+    // case '地區':
+    //   sortIndex = { location: 'asc' };
+    //   break;
     default:
       sortIndex = { name: 'asc' };
       break;
