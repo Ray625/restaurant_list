@@ -17,7 +17,7 @@ router.get('/search', (req, res) => {
   const sortMethod = req.query.sortMethod
   let sortIndex = { name: 'asc' }
   switch (sortMethod) {
-    case '評分高至低':
+    case '評分':
       sortIndex = { rating: 'desc' };
       break;
     // case '類別':

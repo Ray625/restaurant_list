@@ -1,6 +1,6 @@
 ![myimage](https://github.com/Ray625/restaurant_list/blob/main/screen.PNG)
 ## 簡介
-簡易的餐廳清單，可以新增、瀏覽、編輯及刪除餐廳資訊。
+簡易的餐廳清單，使用者登入後，可以新增、瀏覽、編輯及刪除餐廳資訊。
 ## 功能
 + 瀏覽餐廳列表。  
 + 新增餐廳資訊。 
@@ -17,7 +17,8 @@ method-override@3.0.0
 express-session@1.17.1  
 passport@0.4.1  
 passport-local@1.0.0  
-connect-flash@0.1.1
+connect-flash@0.1.1  
+bcryptjs@2.4.3
 ## 開始使用
 1. 請先安裝Node.js與npm  
 2. clone專案至本地
