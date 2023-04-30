@@ -4,18 +4,22 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const app = express()
+const PORT = process.env.PORT || 3000
 
 const routes = require('./routes')
-require('./config/mongoose')
 const usePassport = require('./config/passport')
+require('./config/mongoose')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -36,6 +40,6 @@ app.use((req, res, next) => {
 
 app.use(routes)
 
-app.listen(3000, () => {
-  console.log('The web app is running on http://localhost:3000')
+app.listen(PORT, () => {
+  console.log(`The web app is running on http://localhost:${PORT}`)
 })
