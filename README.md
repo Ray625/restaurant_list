@@ -1,4 +1,5 @@
-![myimage](https://github.com/Ray625/restaurant_list/blob/main/screen.PNG)
+![myimage](https://github.com/Ray625/restaurant_list/blob/main/screen1.PNG?raw=true)
+![myimage](https://github.com/Ray625/restaurant_list/blob/main/screen2.PNG?raw=true)
 ## 簡介
 簡易的餐廳清單，使用者登入後，可以新增、瀏覽、編輯及刪除餐廳資訊。
 ## 功能
