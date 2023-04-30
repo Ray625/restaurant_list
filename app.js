@@ -7,6 +7,7 @@ const app = express()
 
 const routes = require('./routes')
 require('./config/mongoose')
+const usePassport = require('./config/passport')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -16,11 +17,17 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-const usePassport = require('./config/passport')
-usePassport(app)
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+usePassport(app)
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
 
 app.use(routes)
 
