@@ -16,7 +16,8 @@ body-parser@1.20.2
 method-override@3.0.0  
 express-session@1.17.1  
 passport@0.4.1  
-passport-local@1.0.0
+passport-local@1.0.0  
+connect-flash@0.1.1
 ## 開始使用
 1. 請先安裝Node.js與npm  
 2. clone專案至本地
