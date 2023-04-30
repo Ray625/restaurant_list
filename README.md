@@ -27,9 +27,13 @@ passport-facebook@3.0.0
 ```
 npm install
 ```
-4. 設定環境變數: 在專案資料夾下新增.env檔案，並填入你的MongoDB連線字串
+4. 設定環境變數: 在專案資料夾下新增.env檔案，照著.env.example填入對應資料
 ```
-MONGODB_URI = "<你的連線字串>"
+MONGODB_URI = '你的連線字串'  
+FACEBOOK_ID = '你的應用程式編號'  
+FACEBOOK_SECRET = '你的應用程式密鑰'  
+FACEBOOK_CALLBACK = http://localhost:3000/auth/facebook/callback  
+SESSION_SECRET = ThisIsMySecret
 ```
 5. 啟用伺服器
 ```
